@@ -5,7 +5,26 @@ jobs:
     runs-on: ubuntu-latest
     name: Test Liquibase Action
     steps:
-      - uses: actions/checkout@v3
-      - uses: liquibase-github-actions/checks-run@v4.21.1
-        with:
-          Verbose: True
+    - uses: actions/checkout@v3
+    - uses: liquibase-github-actions/validate@v4.21.1
+      with:
+        # The root changelog
+        # string
+        # Required
+        changelogFile: "example/changelogs/changelog.oracle.sql"
+
+        # The JDBC database connection URL
+        # string
+        # Required
+        url: ${{ secrets.URL }}
+
+        # Password to use to connect to the database
+        # string
+        # Optional
+        password: ${{ secrets.PASSWORD }}
+
+        # Username to use to connect to the database
+        # string
+        # Optional
+        username: ${{ secrets.USERNAME }}
+
