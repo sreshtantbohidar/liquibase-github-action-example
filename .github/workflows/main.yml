@@ -6,25 +6,10 @@ jobs:
     name: Test Liquibase Action
     steps:
     - uses: actions/checkout@v3
-    - uses: liquibase-github-actions/validate@v4.21.1
+    - uses: liquibase-github-actions/update@v4.21.1
       with:
-        # The root changelog
-        # string
-        # Required
-        changelogFile: "example/changelogs/changelog.oracle.sql"
-
-        # The JDBC database connection URL
-        # string
-        # Required
+        changelogFile: "changelog.oracle.sql"
         url: ${{ secrets.URL }}
-
-        # Password to use to connect to the database
-        # string
-        # Optional
         password: ${{ secrets.PASSWORD }}
-
-        # Username to use to connect to the database
-        # string
-        # Optional
         username: ${{ secrets.USERNAME }}
 
